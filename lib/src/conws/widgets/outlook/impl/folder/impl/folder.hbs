@@ -1,0 +1,34 @@
+
+<div class="List-item">
+    <div class="wkspItem listItemFolder" id="wkspFolderItem" data-id="{{id}}" tabindex="0">
+        <span class="wksp-expand-icon" data-id="{{id}}"><div id="toggleIcon" class="{{toggleStatus}}" title="{{typeName}}" data-id="{{id}}" /></span>
+        <span class="wkspItemIcon" data-id="{{id}}">
+            {{#if isEmailFolder}}
+                <div class="wkspEmailFolderIcon" data-id="{{id}}"></div>
+            {{/if}}
+            {{#if isRegularFolder}}
+                <div class="wkspFolderIcon" data-id="{{id}}"></div>
+            {{/if}}
+            {{#if isCompoundDocument}}
+                <div class="csui-icon compound_document listItemIcon" data-id="{{id}}"></div>
+            {{/if}}            
+        </span>
+        <span data-id="{{id}}" class="wkspItemName" title="{{name}}">{{name}}</span>
+        <div class="wkspFolder-actiondiv binf-fade" data-id="{{id}}" style="display:none">
+            <div id="folderActionBar" class="wkspFolder-actionbar wkspFolder-actionbar-bubble" >
+                <ul class="wksptile-nav wkspnav wksptile-pills">
+                    
+                    <li class="needsclick">
+                        <div >
+                            <a href="javascript:;" id="saveEmailButton" title="{{saveTitle}}" data-id="{{id}}" tabindex="-1" >
+                                <div class="wkspIcon emailSaveIcon" data-id="noToggle" />
+                            </a>            
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="subFolders"></div>
+</div>
+<!-- Copyright (c) 2016-2017  OpenText Corp. All Rights Reserved. -->

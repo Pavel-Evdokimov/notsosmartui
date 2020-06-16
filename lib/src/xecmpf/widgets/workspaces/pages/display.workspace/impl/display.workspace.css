@@ -1,0 +1,13 @@
+/* Copyright (c) 2016-2017  OpenText Corp. All Rights Reserved. */
+
+.binf-widgets #xecmpf-display_wksp {
+    height: 100%;
+}
+
+.binf-widgets #xecmpf-display_wksp #display_wksp_content {
+    height: calc(100%);
+}
+
+.binf-widgets #xecmpf-display_wksp #csui-folderbrowser-core div.csui-fb-nodestable {
+    height: 100%;
+}

@@ -1,0 +1,67 @@
+{
+  "csui/models/server.module/server.module.collection": {
+    "modules": {
+      "conws": {
+        "version": "16.2.8.1203",
+        "helpDocId": "cscws160208-h-ugd"
+      }
+    }
+  },
+  "csui/utils/nodesprites": {
+    "extensions": {
+      "conws": [
+        "conws/utils/icons/icons"
+      ]
+    }
+  },
+  "csui/controls/tabletoolbar/tabletoolbar.view": {
+    "extensions": {
+      "conws": [
+        "conws/utils/commands/tabletoolbar.extension"
+      ]
+    }
+  },
+  "csui/utils/commands": {
+    "extensions": {
+      "conws": [
+        "conws/utils/commands/delete",
+        "conws/utils/commands/addconws",
+        "conws/utils/commands/addconwstemplate"
+      ]
+    }
+  },
+  "csui/models/widget/widget.collection": {
+    "widgets": {
+      "conws": [
+        "conws/widgets/header",
+        "conws/widgets/relatedworkspaces",
+        "conws/widgets/team",
+        "conws/widgets/metadata",
+        "conws/widgets/myworkspaces",
+        "conws/widgets/configurationvolume"
+      ]
+    }
+  },
+  "csui/controls/table/inlineforms/inlineform.factory": {
+    "extensions": {
+      "conws": [
+        "conws/controls/inlineforms/workspace/workspace.view",
+        "conws/controls/inlineforms/conwstemplate/conwstemplate.view"
+      ]
+    }
+  },
+  "csui/utils/defaultactionitems": {
+    "extensions": {
+      "conws": [
+        "conws/utils/commands/defaultactionitems"
+      ]
+    }
+  },
+  "csui/controls/form/form.view": {
+    "extensions": {
+      "conws": [
+        "conws/controls/form/fields/alpaca/referencefield"
+      ]
+    }
+  }
+}

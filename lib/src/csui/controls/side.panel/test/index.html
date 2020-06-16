@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>SidePanel Control</title>
+
+  <link rel="stylesheet" href="../../../themes/carbonfiber/theme.css">
+  <style>
+    #medium .binf-modal-dialog {
+      margin-top: 200px;
+    }
+    #large .binf-modal-dialog {
+      margin-top: 300px;
+    }
+    #viewInside .binf-modal-dialog {
+      margin-top: 550px;
+    }
+    .binf-modal-backdrop {
+      display: none;
+    }
+
+    .sidepanel-container {
+      background-color: #fff;
+      padding: 20px !important;
+      margin: 20px !important;
+    }
+
+    .trigger-btn {
+      margin: 10px 0px !important; 
+    }
+
+    #custom {
+      width: 500px;
+      height: 600px;
+    }
+
+
+
+  </style>
+
+  <style>
+    .step-view {
+        display: flex ;
+        align-items: center;
+        justify-content: center;
+        height: 500px; 
+        flex-flow: column;
+    }
+
+    .step-view h1 {
+      font-size: 38px;
+      padding: 20px;
+    }
+  </style>
+
+  <script src="../../../lib/require.js"></script>
+  <script src="../../../config.js" data-csui-path="../../.."></script>
+
+
+
+  <script type="text/x-template" id="step-template">
+    <div> <h1> {{name}}</h1> </div>
+
+    {{#if  hasAction}}
+    <div> <button class="binf-btn binf-btn-default" id="customaction2">Enable Custom Action</button></div>
+    {{/if}}
+
+    <div id="action-trigger"> </div>
+  </script>
+
+  <script type="text/x-template" id="cs-view">
+    <div class="custom-search"> </div>
+    <div class="results"> </div>
+  </script>
+
+
+  <script>
+    require.config({
+      deps: [
+        'csui/lib/require.config!csui/csui-extensions.json'
+      ]
+    });
+
+    require.config({
+      config: {
+        'csui/utils/contexts/factories/connector': {
+          connection: {
+            url: 'http://murdock.opentext.com/alpha/llisapi.dll/api/v1',
+            supportPath: ''
+          }
+        }
+      }
+    });
+
+    require(['csui/lib/jquery', 'csui/lib/underscore', 'csui/lib/backbone', 'csui/lib/marionette', 'csui/lib/handlebars', '../side.panel.view',
+        'csui/utils/contexts/page/page.context',
+        'csui/widgets/search.custom/search.custom.view',
+        'csui/widgets/search.results/search.results.view',
+      ],
+
+      function($, _, Backbone, Marionette, Handlebars, SidePanelView, PageContext, CustomSearch, SearchResultsView) {
+
+        var StepView = Marionette.ItemView.extend({
+          className: 'step-view',
+          template: function(data) {
+            return Handlebars.compile($('#step-template').html())(data);
+          },
+          templateHelpers: function() {
+            return {
+              name: this.options.name,
+              hasAction: this.options.hasAction
+            };
+          },
+          events: {
+            'click #customaction2': function() {
+              this.trigger("update:button", "customaction2", {
+                disabled: false
+              });
+            }
+          },
+          onRender: function() {
+            this.listenTo(this, "button:click", function(actionButton) {
+              this.$el.find("#action-trigger").text('Action Button Clicked: "' + actionButton.get('label') + '"');
+            });
+
+          },
+        });
+
+        function showSidePanel(options) {
+          var sidePanel = new SidePanelView(_.extend({
+            slides: [{
+                title: 'Form1',
+                content: new StepView({
+                  name: 'Form1'
+                }),
+                buttons: [{
+                  label: 'Edit properties',
+                  type: 'action',
+                  className: 'binf-btn binf-btn-primary'
+                }]
+              }, {
+                title: 'Form2',
+                content: new StepView({
+                  name: 'Form2',
+                  hasAction: true
+                }),
+                buttons: [{
+                    label: 'Custom Acton1',
+                    type: 'action',
+                    className: 'binf-btn binf-btn-primary'
+                  },
+                  {
+                    label: 'Custom Action2',
+                    type: 'action',
+                    id: "customaction2",
+                    disabled: true,
+                    className: 'binf-btn binf-btn-primary'
+                  }
+                ]
+              },
+              {
+                title: 'Confirm changes',
+                content: new StepView({
+                  name: 'Changes Here'
+                }),
+                buttons: [{
+                  label: '(Custom) Finish',
+                  type: 'action'
+                }]
+              }
+            ]
+          }, options));
+          return sidePanel;
+        }
+
+        var panel1;
+        $('#button1').click(function() {
+          if (!panel1 || !$.contains(document, panel1.el)) {
+            panel1 = showSidePanel({
+              openFrom: 'right'
+            });
+          }
+          panel1.show();
+        });
+
+        var panel2;
+        $('#button2').click(function() {
+          if (!panel2 || !$.contains(document, panel2.el)) {
+            panel2 = showSidePanel({
+              openFrom: 'left'
+            });
+          }
+          panel2.show();
+        });
+
+        
+
+
+        
+
+        var CSView = Marionette.LayoutView.extend({
+          template: function(data) {
+            return Handlebars.compile($('#cs-view').html())(data);
+          },
+          constructor: function CSView() {
+            Marionette.LayoutView.apply(this, arguments);
+          },
+          regions: {
+            custom: '.custom-search',
+            results: '.results'
+          },
+          onRender: function() {
+            var queryModel = new Backbone.Model();
+            var customSearch = new CustomSearch({
+              context: this.options.context,
+              data: {
+                savedSearchQueryId: 1521698
+              },
+              query: queryModel
+            });
+            this.custom.show(customSearch);
+
+            var resultsView = new SearchResultsView({
+              context: this.options.context,
+              query: queryModel,
+              enableBackButton: true
+            });
+            resultsView.$el.hide();
+
+            this.listenTo(queryModel, "change", function(){ 
+              customSearch.$el.hide();
+              resultsView.$el.show();
+            });
+
+            this.results.show(resultsView);
+            this.listenTo(resultsView, "go:back", function() {
+              console.log("go:back ", this);
+              customSearch.$el.show();
+              resultsView.$el.hide();
+            });
+            pageContext.fetch();
+          }
+        });
+
+        var pageContext = new PageContext();
+        var csviewInstance = new CSView({context: pageContext});
+        
+        var sidePanel = new SidePanelView(_.extend({
+            slides: [{
+                title: 'Search',
+                content: csviewInstance,
+                buttons: [{
+                  label: 'Search',
+                  type: 'action',
+                  className: 'binf-btn binf-btn-primary'
+                }]
+              }
+            ]
+          }));
+          sidePanel.show();
+
+        $('#button2').click(function() {
+          sidePanel.show();
+        });
+
+// new Marionette.Region({
+//   el: $("#custom")
+// })
+
+      });
+  </script>
+</head>
+
+
+<body class="binf-widgets">
+
+  <div class="sidepanel-container">
+    <h1>Side Panel control samples</h1>
+    <div class="row">
+      <div class="col-sm-6 col-md-5 col-lg-4" id="default">
+        <button id="button1" class="binf-btn binf-btn-primary trigger-btn">Open SidePanel From Right</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-5 col-lg-4" id="default">
+        <button id="button2" class="binf-btn binf-btn-primary trigger-btn">Open SidePanel from Left (RTL sliding)</button>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 col-md-5 col-lg-4" id="search">
+          <button id="button2" class="binf-btn binf-btn-primary trigger-btn">Open Search</button>
+        </div>
+      </div>
+  </div>
+
+  <div>
+    <div id="custom"></div>
+    <div id="result"></div>
+  </div>
+</body>
+
+</html>
+<!-- Copyright (c) 2016-2017  OpenText Corp. All Rights Reserved. -->

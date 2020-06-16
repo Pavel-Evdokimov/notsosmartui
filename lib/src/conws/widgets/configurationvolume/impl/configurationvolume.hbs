@@ -1,0 +1,14 @@
+{{#if noConfiguredVolumes}}
+  <div class="conws-empty-configurevolume-container">{{emptyResultsText}}</div>
+{{else}}
+  <div class="conws-configurevolume-tile-content">
+    {{#each items}}
+      <div
+          class="csui-configurationvolume-container csui-shortcut-region csui-region-{{layout}} shortcut-region-{{@index}}"
+          role="menuitem"></div>
+    {{/each}}
+  </div>
+{{/if}}
+
+
+<!-- Copyright (c) 2016-2017  OpenText Corp. All Rights Reserved. -->

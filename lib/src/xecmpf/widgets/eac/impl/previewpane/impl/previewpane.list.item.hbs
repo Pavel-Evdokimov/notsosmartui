@@ -1,0 +1,36 @@
+{{#if isRulesView}}
+    <div class="xecmpf-eac-rules">
+        {{#if noRules}}
+            <span class="xecmpf-eac-rules-empty">{{emptyRules}}</span>
+        {{else}}
+            <span class="xecmpf-eac-rules-key">{{operand}}</span>
+            <span class="xecmpf-eac-rules-operator">{{operator}}</span> &nbsp;&nbsp;
+            <span class="xecmpf-eac-rules-value">{{value}}</span>
+            
+        {{/if}}
+        
+    </div>
+{{/if}}
+{{#if isActionPlanView}}    
+    <div class="xecmpf-eac-actions">
+        {{#if actionscount}}
+            {{#each actionscount}}
+                <span class="xecmpf-eac-actions-id">{{this}}</span>
+            {{/each}}
+        {{/if}}
+        
+        <span class="xecmpf-eac-actions-name">0{{position}} {{action_name}}</span>
+    </div>
+{{/if}}
+
+{{#if isactPlanRunView}}
+    <div class="xecmpf-eac-actplan-run">
+        <span class="xecmpf-eac-actplan-runas">{{runAsHeader}}</span>
+        <span class="xecmpf-eac-actplan-user">{{runAsUser}}</span>
+    </div>
+    <div class="xecmpf-eac-actplan-process">
+        <span class="xecmpf-eac-actplan-mode">{{processHeader}}</span>
+        <span class="xecmpf-eac-actplan-value">{{processMode}}</span>
+    </div>
+{{/if}}
+<!-- Copyright (c) 2016-2017  OpenText Corp. All Rights Reserved. -->

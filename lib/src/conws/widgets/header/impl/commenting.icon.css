@@ -1,0 +1,58 @@
+/* Copyright (c) 2016-2017  OpenText Corp. All Rights Reserved. */
+
+.binf-widgets .cs-perspective-panel .conws-header-toolbar .conws-comment-icon a:focus {
+  outline: 1px dotted #ffffff;
+  outline-offset: -1px;
+}
+
+.conws-comment-icon .cs-text {
+  max-width: 1.2rem;
+  margin-top: 0.5rem;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.binf-widgets .cs-perspective-panel .conws-header-toolbar .conws-comment-icon .conws-comment-icon *:focus {
+  outline: none;
+}
+
+.binf-widgets .cs-perspective-panel .conws-header-toolbar .conws-comment-icon .esoc-socialactions-comment-container {
+  display: inline-block;
+  padding: 1px;
+}
+
+.binf-widgets .cs-perspective-panel .conws-header-toolbar .conws-comment-icon .esoc-column-social .cs-icon-comment {
+  background-image: url('../../../image/icons/conws_comment.svg');
+  width: 15px;
+  height: 30px;
+  margin-top: 0px;
+}
+
+.binf-widgets .cs-perspective-panel .conws-header-wrapper .conws-header-toolbar .conws-comment-icon .cs-icon-comment {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.binf-widgets .cs-perspective-panel .conws-header-toolbar-extension.conws-header-toolbar .conws-comment-icon .cs-icon-comment {
+  padding: 22px 26px 24px;
+}
+
+.binf-widgets .cs-perspective-panel .conws-header-wrapper .conws-header-toolbar .conws-comment-icon .esoc-column-social-comment-wrapper {
+  padding: 0 12px;
+}
+
+.conws-header-toolbar .conws-comment-icon .esoc-socialactions-comment .cs-text {
+  margin-top: 3px;
+  color: #ffffff;
+}
+
+.binf-widgets .cs-perspective-panel .csui-toolbar.binf-nav > li > .custom-view-region > div > div > button > .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.binf-widgets .cs-perspective-panel .conws-header-toolbar .csui-tabletoolbar .esoc-socialactions-comment .cs-text {
+  display: none;
+}

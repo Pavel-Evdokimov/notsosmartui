@@ -1,0 +1,66 @@
+/* Copyright (c) 2016-2017  OpenText Corp. All Rights Reserved. */
+
+.carousel-nav{
+    display: flex;
+    position: absolute;
+    background: white;
+    top: 0;
+    height:  17px;
+    bottom: -48px;
+    margin-left: 30.5% !important;
+    
+}
+
+.binf-panel-body.xecmpf-eac-preview-body .carousel-nav{
+    margin-left: 42.5% !important
+}
+
+.binf-modal-body .carousel-nav-dot{
+    margin: 0 6px;
+    height: 0.875rem;
+    width: 0.875rem;
+    border: 1px solid #71747b;
+    border-radius: 50%;
+}
+.binf-panel-body.xecmpf-eac-preview-body .carousel-nav-dot{
+    margin: 0 6px;
+    height: 0.875rem;
+    width: 0.875rem;
+    border: 1px solid #333333; 
+    border-radius: 50%;
+}
+
+.binf-panel-body.xecmpf-eac-preview-body .carousel-nav .carousel-nav-dot.active{
+    background-color: #333333;
+    margin: 0 6px;
+    height: 0.875rem;
+    width: 0.875rem;
+    border: 1px solid #333333;
+    border-radius: 50%;
+}
+.carousel-nav .carousel-nav-dot.active{
+    background-color: #232e72;
+    margin: 0 6px;
+    height: 0.875rem;
+    width: 0.875rem;
+    border: 1px solid #232e72;
+    border-radius: 50%;
+}
+
+.carousel-nav .carousel-nav-dash{
+    background-color: #a9aeb9;
+    height: 4px;
+    width: 7.25rem;
+    margin-top: 5px;
+}
+
+.binf-panel-body.xecmpf-eac-preview-body .carousel-nav .carousel-nav-dash{
+    background-color: #ffffff;
+    width: 0rem;
+    margin-top: 5px;
+}
+
+.xecmpf-eac-actionplan-add .xecmpf-eac-actionplan-add-nav{
+	height: 30px;
+    margin-top: 10px;
+}

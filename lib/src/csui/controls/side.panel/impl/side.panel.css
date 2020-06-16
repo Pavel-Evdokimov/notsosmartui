@@ -1,0 +1,136 @@
+/* Copyright (c) 2016-2017  OpenText Corp. All Rights Reserved. */
+
+
+
+.csui-sidepanel .csui-sidepanel-header {
+  border-bottom: 1px solid #e6e7e8;
+  background-color: #f5f5f5;
+}
+
+.csui-sidepanel .csui-sidepanel-footer {
+  border-top: 1px solid #a9a9a9;
+  background-color: #f5f5f5;
+}
+
+.csui-sidepanel .csui-sidepanel-body {
+  min-height: 27rem;
+  background-color: #ffffff;
+  height: calc(100vh - 104px);
+  overflow: auto;
+}
+
+
+
+.csui-sidepanel .csui-sidepanel-title {
+  margin: 0 15px;
+  height: 100%;
+  font-size: 1.5rem;
+}
+
+.csui-sidepanel .csui-sidepanel-header .csui-sidepanel-close .icon {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.csui-sidepanel .csui-sidepanel-header .csui-sidepanel-close {
+  float: right;
+  font-size: 1.1em;
+  padding: 0px 5px;
+  margin: 0;
+}
+
+.csui-sidepanel .cs-header-control {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  line-height: 48px;
+  justify-content: space-between;
+}
+
+.csui-sidepanel .cs-footer-control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 56px;
+  margin: 0px 10px;
+}
+
+.csui-sidepanel .cs-footer-control .cs-footer-btn {
+  margin: 0px 3px;
+}
+
+.csui-sidepanel .cs-go-back {
+  width: 18px;
+  height: 18px;
+  border: 0;
+  background-color: transparent;
+}
+
+.csui-sidepanel .csui-slide-hidden {
+  display: none !important;
+}
+
+.csui-sidepanel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  visibility: hidden;
+  -webkit-transition: visibility 0s .6s;
+  transition: visibility 0s .6s;
+}
+
+.csui-sidepanel--from-right .csui-sidepanel-container {
+  right: 0;
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0)
+}
+
+.csui-sidepanel--from-left .csui-sidepanel-container{
+  left: 0;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0)
+}
+
+.csui-sidepanel-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 0 0;
+  -webkit-transition: background .3s .3s;
+  transition: background .3s .3s;
+  cursor: pointer;
+}
+
+.csui-sidepanel-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50vw;
+  -webkit-transition: -webkit-transform .3s .3s;
+  transition: -webkit-transform .3s .3s;
+  transition: transform .3s .3s;
+  transition: transform .3s .3s, -webkit-transform .3s .3s;
+}
+
+.csui-sidepanel.csui-sidepanel-visible {
+  visibility: visible;
+  -webkit-transition: visibility 0s 0s;
+  transition: visibility 0s 0s;
+}
+
+.csui-sidepanel.csui-sidepanel-visible .csui-sidepanel-container {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  transition-delay: 0s;
+}
+
+.csui-sidepanel.csui-sidepanel-visible .csui-sidepanel-backdrop {
+  background: rgba(0, 0, 0, .6);
+  -webkit-transition: background .3s 0s;
+  transition: background .3s 0s
+}

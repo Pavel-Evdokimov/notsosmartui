@@ -1,0 +1,12 @@
+/* Copyright (c) 2016-2017  OpenText Corp. All Rights Reserved. */
+
+.binf-widgets .conws-workspacestitleicondefault {
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 36px;
+}
+
+.conws-workspacestitleicon img {
+  max-width: 36px;
+  max-height: 36px;
+}

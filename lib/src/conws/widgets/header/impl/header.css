@@ -1,0 +1,537 @@
+/* Copyright (c) 2016-2017  OpenText Corp. All Rights Reserved. */
+
+.binf-widgets .conws-header {
+  height: 100%;
+}
+
+.conws-header .binf-popover {
+  max-width: 25rem;
+  top: 0.1rem !important;
+}
+
+.conws-header .binf-popover .binf-arrow {
+  top: calc(50% - 1.875rem) !important;
+}
+
+.cs-collapse .conws-header .binf-popover .binf-arrow {
+  top: calc(50% - 3.375rem) !important;
+}
+
+.binf-widgets .conws-header-wrapper {
+  color: #ffffff;
+  height: 100%;
+  width: 100%;
+  padding-top: 16px;
+}
+
+.binf-widgets .conws-header .conws-header-metadata,
+.binf-widgets .conws-header .conws-header-metadata-childview {
+  position: relative;
+  float: left;
+  padding-left: 24px;
+  padding-right: 24px;
+  height: 100%;
+}
+
+.binf-widgets .conws-header .conws-header-wrapper .conws-header-metadata-container {
+  height: calc(100% - 37px);
+  float: left; 
+  padding-left: 24px;
+  width: calc(100% - 88px);
+}
+
+.binf-widgets .conws-header .conws-header-metadata {
+  width: 100%;
+}
+
+.binf-widgets .conws-header .conws-header-metadata-childview {
+  width: calc(60% - 0.625rem);
+}
+
+.binf-widgets .cs-collapse .conws-header .conws-header-wrapper .conws-header-metadata,
+.binf-widgets .cs-collapse .conws-header .conws-header-wrapper .conws-header-metadata-childview {
+  padding-left: 24px;
+  padding-right: 10px;
+}
+
+.binf-widgets .conws-header-edit {
+  width: 4.0rem;
+  height: 4.0rem;
+}
+
+.conws-header-edit:focus {
+  outline: 1px dotted #cccccc;
+  outline-offset: 0px;
+}
+
+.cs-collapse .conws-header-edit {
+  pointer-events: none;
+  width: 3.0rem;
+  height: 3.0rem;
+}
+
+.conws-header-edit:hover .header-image {
+  position: absolute;
+}
+
+.conws-header-edit:hover .header-editor {
+  display: block;
+  cursor: pointer;
+  opacity: .9;
+}
+
+.conws-header-edit:focus .header-image {
+  position: absolute;
+}
+
+.conws-header-edit:focus .header-editor {
+  display: block;
+  cursor: pointer;
+  opacity: .9;
+}
+
+.cs-collapse .conws-header-edit:hover .header-editor {
+  display: none;
+}
+
+.cs-collapse .conws-header-edit:focus .header-editor {
+  display: none;
+}
+
+.binf-widgets .conws-header-image {
+  float: left;
+  width: 64px;
+  height: 100%;
+}
+
+.cs-collapse .conws-header-image {
+  width: 4.0rem;
+}
+
+.binf-widgets .conws-header-image img {
+  width: 4.0rem;
+  height: 4.0rem;
+  transition: height .3s, width .3s;
+  border-radius: 5%;
+}
+
+.cs-collapse .conws-header-image img {
+  height: 3.0rem;
+  width: 3.0rem;
+  border-radius: 5%;
+}
+
+.binf-widgets .header-image {
+  width: 4.0rem;
+  height: 4.0rem;
+  transition: height .3s, width .3s;
+}
+
+.binf-widgets .header-editor {
+  display: none;
+  width: 4.0rem;
+  height: 4.0rem;
+}
+
+.cs-collapse .header-editor {
+  display: none;
+  width: 3.0rem;
+  height: 3.0rem;
+}
+
+.header-editor > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.binf-widgets .conws-header-title {
+  overflow: hidden;
+}
+
+.cs-collapse .conws-header-title {
+  height: 2.0rem;
+}
+
+.conws-header-title > h1 {
+  color: #ffffff;
+  line-height: 2.063rem;
+  font-weight: 300;
+  font-size: 1.75rem;
+  transition: font-size .3s;
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.cs-collapse .conws-header-title > p {
+  font-size: 1.75rem;
+}
+
+.binf-widgets .conws-header-type {
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.binf-widgets .conws-header-desc {
+  left: 7.0rem;
+  top: 7.625rem;
+  overflow: hidden;
+  display: flex;
+  max-width: 100%;
+  padding-bottom: 16px;
+  min-height: 2rem;
+}
+
+.binf-widgets .conws-header-desc {
+  opacity: 1;
+  transition: opacity .2s;
+}
+
+.cs-collapse .conws-header-desc {
+  opacity: 0;
+}
+
+.binf-widgets .conws-header-metadata-extension {
+  overflow: hidden;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.binf-widgets .cs-perspective-panel .cs-tabbed-perspective.cs-collapse > .cs-header .conws-header-metadata-container{
+  display: none;
+}
+
+.conws-header-type > p {
+  color: #cccccc;
+  font-size: 1.125rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.313rem;
+}
+
+#conws-header-childview .object-group-item {
+  background-color: transparent;
+}
+
+.binf-widgets .conws-header-comment {
+  float: left;
+  height: 1.5rem;
+  width: 3rem;
+}
+
+.cs-collapse #conws-header-childview {
+  display: none;
+}
+
+.binf-widgets .conws-header-favorite {
+  padding-top: 0.1rem;
+  float: right;
+}
+
+.binf-widgets .conws-header-addon {
+  float: left;
+  padding-top: 1.75rem;
+}
+
+.conws-header-addon:after {
+  clear: both;
+}
+
+.cs-collapse .conws-header-addon {
+  display: none;
+}
+
+
+@media (max-width: 63rem) {
+
+  #conws-header-childview {
+    display: none;
+  }
+
+  .binf-widgets .conws-header .conws-header-metadata-childview {
+    width: 100%;
+  }
+
+  .binf-widgets .conws-header .conws-header-childView-container {
+    display: none;
+  }
+}
+
+.binf-widgets .conws-header-edit:focus {
+  outline: 1px dotted #cccccc;
+  outline-offset: -1px;
+}
+
+.binf-widgets .conws-header-wrapper #conws-header-childview .esoc-empty-activityfeed-message {
+  color: #ffffff;
+  margin-top: 1.0em
+}
+
+.binf-widgets .conws-header #conws-header-childview {
+  opacity: 1;
+  transition: opacity .2s;
+  height: 100%;
+  overflow: hidden;
+}
+
+.binf-widgets .conws-header .conws-header-toolcontainer,
+.binf-widgets .conws-header .conws-header-childView-container {
+  float: left;
+  height: 100%;
+  width: 40%;
+  opacity: 1;
+  transition: opacity .2s;
+  padding: 0px;
+}
+
+.binf-widgets .cs-collapse .conws-header .conws-header-childView-container {
+  display: none;
+}
+
+.binf-widgets .cs-collapse .conws-header .conws-header-metadata,
+.binf-widgets .cs-collapse .conws-header .conws-header-metadata-childview {
+  width: 100%;
+
+}
+
+.binf-widgets .cs-perspective-panel .cs-tabbed-perspective.cs-collapse > .cs-header {
+  height: 96px;
+}
+
+
+
+.binf-widgets .conws-header-toolbar .csui-filterToolbar,
+.binf-widgets .conws-header-toolbar .csui-addToolbar,
+.binf-widgets .conws-header-toolbar .csui-leftToolbar,
+.binf-widgets .conws-header-toolbar .csui-otherToolbar,
+.binf-widgets .conws-header-toolbar .csui-toolbar-caption {
+  display: none;
+  width: 0px;
+}
+
+.binf-widgets .conws-header .conws-header-toolbar .csui-rightToolbar,
+.binf-widgets .conws-header .conws-header-toolbar .csui-tabletoolbar {
+  width: 100%;
+  height: 32px;
+}
+
+.binf-widgets .conws-header .conws-header-toolbar > .csui-acc-tab-region {
+  height: 100%;
+  padding: 0;
+  float: right;
+}
+
+.binf-widgets .conws-header .conws-header-toolbar .csui-tabletoolbar {
+  height: 27px;
+  vertical-align: middle;
+}
+
+.binf-widgets .conws-header .conws-header-toolbar .csui-tabletoolbar {
+  border-bottom: 0px;
+  background-color: inherit;
+  display: none;
+  padding-right: 0px;
+}
+
+.binf-widgets .cs-collapse .conws-header .conws-header-toolbar .csui-tabletoolbar {
+  display: inline-block;
+}
+
+.binf-widgets .tab-panel .conws-header-toolbar-extension .csui-tabletoolbar {
+  border-bottom: 0px;
+  background-color: transparent;
+  padding: 0px;
+}
+
+
+.binf-widgets .tab-panel .conws-header-toolbar-extension {
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: inline-block;
+}
+
+.binf-widgets .cs-collapse .tab-panel .conws-header-toolbar-extension {
+  display: none;
+}
+
+
+
+.cs-tabbed-perspective > .cs-header {
+  height: 10rem;
+}
+
+
+
+.binf-widgets .conws-header .conws-header-title-section {
+  width: calc(100% - 88px);
+  display: flex;
+  margin-bottom: 4px;
+  padding-left: 24px;
+}
+
+.binf-widgets .cs-perspective-panel .cs-tabbed-perspective.cs-collapse .conws-header .conws-header-title-section {
+  width: calc(100% - 32px);
+  padding-left: 16px;
+}
+
+.binf-widgets .conws-header .conws-header-toolbar {
+  float: right;
+  display: flex;
+  flex: 1 0 auto;
+
+}
+
+.binf-widgets .conws-header .conws-header-title {
+  height: auto;
+  display: flex;
+  flex: 1 1 100%;
+  margin-right: 64px;
+}
+
+
+.binf-widgets .conws-header .conws-header-metadata .conws-header-title h1 {
+  margin-right: 0px;
+}
+
+.binf-widgets .conws-header-type > p {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 24px;
+  color: #ffffff;
+}
+
+.binf-widgets .cs-tabbed-perspective .header-editor {
+  width: 40px;
+  height: 64px;
+  margin: 0 auto;
+}
+
+.binf-widgets .cs-tabbed-perspective .header-editor > span {
+  width: 40px;
+  height: 64px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.binf-widgets  .conws-header .conws-header-wrapper .conws-header-title h1 {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+
+.binf-widgets .cs-collapse .conws-header .conws-header-title h1 {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.binf-widgets .conws-header #conws-header-childview .cs-userfield .cs-name a {
+  font-size: 12px;
+  color: #ffffff;
+  line-height: 14px;
+}
+
+.conws-header .conws-header-addon {
+  float: right;
+  padding: 0 1.75rem;
+}
+
+.binf-widgets .cs-collapse .conws-header .conws-header-title {
+  padding-bottom: 0;
+}
+
+.binf-widgets .conws-header #conws-header-childview .cs-userfield .user-default-image {
+  margin-right: 6px;
+}
+
+.binf-widgets .cs-perspective-panel .cs-tabbed-perspective.cs-collapse .conws-header .conws-header-image,
+.binf-widgets .cs-perspective-panel .cs-tabbed-perspective.cs-collapse .conws-header .conws-header-image .conws-header-edit,
+.binf-widgets .cs-perspective-panel .cs-tabbed-perspective.cs-collapse .conws-header .conws-header-image img {
+  width: 32px;
+  height: 32px;
+}
+
+.binf-widgets .conws-header .esoc-user-profile-link:focus,
+.binf-widgets .conws-header .esoc-activityfeed-list-item .esoc-social-mime-icon.csui-icon:focus,
+.binf-widgets .conws-header .esoc-activityfeed-header .esoc-object-name:focus,
+.binf-widgets .conws-header .csui-tabletoolbar .csui-toolbar.binf-nav > li > a:focus,
+.binf-widgets .conws-header .csui-tabletoolbar .csui-toolbar.binf-nav > li > .custom-view-region > div > div > button:focus,
+.binf-widgets .conws-header .conws-description .description-showless:focus,
+.binf-widgets .conws-header .conws-description .description-readmore:focus {
+  outline-color: white;
+}
+
+.conws-header .esoc-activityfeed-list-item .esoc-commentinfo-block-wrapper {
+  margin-left: 12px;
+  width: calc(100% - 3rem) !important;
+}
+
+.conws-header .esoc-activityfeed-header .esoc-commentinfo-block .esoc-social-comment-details .esoc-comment-user-details .esoc-user-display-name,
+.conws-header .esoc-activityfeed-header .esoc-comment-msg .esoc-reply-user-widget .esoc-user-display-name {
+  color: #9DE4F9;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.binf-widgets .conws-header .esoc-activityfeed-header .esoc-activityfeed-actiontype {
+  color: #cccccc;
+  font-size: 10px;
+}
+
+.conws-header .esoc-activityfeed-header .esoc-social-attachment,
+.conws-header .esoc-activityfeed-header .esoc-comment-msg {
+  margin-top: 4px;
+}
+
+.conws-header .esoc-activityfeed-header .esoc-object-name {
+  margin-left: 7px;
+  color: #9DE4F9;
+  font-size: 10px;
+  line-height: 18px;
+}
+
+.conws-header .esoc-activityfeed-header .esoc-object-name:hover {
+  color: #9DE4F9;
+}
+
+
+.conws-header .esoc-activityfeed-list-item.binf-row.object-group-item {
+  margin-top: 14px;
+}
+
+.conws-header .esoc-activityfeed-list-item.binf-row.object-group-item:first-child {
+  margin-top: 0;
+}
+
+.conws-header .esoc-activityfeed-list-item .esoc-commentinfo-block {
+  margin-top: 4px;
+}
+
+.conws-header .esoc-activityfeed-list-item .esoc-acitivity-feed-fft > div {
+  font-size: 12px;
+  line-height: 16px;
+  color: #ffffff;
+  padding-top: 4px;
+}
+
+.conws-header .esoc-activityfeed-header .esoc-social-comment-data .esoc-description,
+.conws-header .esoc-activityfeed-header .esoc-social-comment-data {
+  font-size: 12px;
+  line-height: 16px;
+  color: #ffffff;
+}
+
+.conws-header .esoc-activityfeed-header .esoc-see-more,
+.conws-header .esoc-activityfeed-header .esoc-see-less {
+  background: transparent;
+}
+
+.conws-header .esoc-activityfeed-header .esoc-extended-view-mode {
+  margin-top: 0;
+}

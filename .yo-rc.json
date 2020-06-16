@@ -1,0 +1,7 @@
+{
+  "generator-csui-extension": {
+    "projectName": "greetings",
+    "projectDescription": "CS UI greetings extension module",
+    "modulePrefix": "greet"
+  }
+}

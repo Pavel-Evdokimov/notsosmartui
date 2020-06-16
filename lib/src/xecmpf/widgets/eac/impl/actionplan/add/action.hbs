@@ -1,0 +1,15 @@
+{{#if summary}}
+{{#if actionName}}
+<div class='eac-actions-list'>0{{sequence}} {{actionName}}</div>
+{{/if}}
+{{else}}
+
+<div class='eac-action-header'>
+  <h5 class='eac-action-title'>{{actionLabel}} {{sequence}}</h5>
+  <button class="xecmpf-eac-action-delete csui-icon eac-delete-icon" aria-hidden="true"></button>
+  <button class='xecmpf-eac-action-copy csui-icon eac-copy-icon' aria-hidden="true"></button>
+</div>
+<div class="xecmpf-eac-action-form"></div>
+
+{{/if}}
+<!-- Copyright (c) 2016-2017  OpenText Corp. All Rights Reserved. -->

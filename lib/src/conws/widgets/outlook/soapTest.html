@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>SOAP Test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <script>
+        function getRequest(emailId) {
+            var request =
+                    '<?xml version="1.0" encoding="utf-8"?>' +
+                        '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' +
+                        '               xmlns:xsd="http://www.w3.org/2001/XMLSchema"' +
+                        '               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"' +
+                        '               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">' +
+                        '  <soap:Header>' +
+                        '    <RequestServerVersion Version="Exchange2013" xmlns="http://schemas.microsoft.com/exchange/services/2006/types" soap:mustUnderstand="0" />' +
+                        '  </soap:Header>' +
+                        '  <soap:Body>' +
+                        '    <GetItem xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">' +
+                        '      <ItemShape>' +
+                        '        <t:BaseShape>IdOnly</t:BaseShape>' +
+                        '        <t:IncludeMimeContent>true</t:IncludeMimeContent>' +
+                        '        <t:AdditionalProperties>' +
+                        //'            <t:FieldURI FieldURI="item:Subject"/>' +
+                        '            <t:FieldURI FieldURI="item:TextBody"/>' +
+                        //'            <t:FieldURI FieldURI="item:Body"/>' +
+                        '        </t:AdditionalProperties>' +
+                        '      </ItemShape>' +
+                        '      <ItemIds><t:ItemId Id="' + emailId + '" />' +
+                        '      "/></ItemIds>' +
+                        '    </GetItem>' +
+                        '  </soap:Body>' +
+                        '</soap:Envelope>';
+            return request;
+        }
+        var url = "https://outlook.office365.com/EWS/Exchange.asmx";
+
+        var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImVuaDlCSnJWUFU1aWpWMXFqWmpWLWZMMmJjbyJ9.eyJuYW1laWQiOiI1ZTY1YzQ5OC1hMTMxLTQ5NGUtODViNC03NjJjYTM4Y2YzNTJAMGUyMWEyODItNTU1My00NTNlLWI0YWItYTNlMGExZGU2MDIzIiwidmVyIjoiRXhjaGFuZ2UuQ2FsbGJhY2suVjEiLCJhcHBjdHhzZW5kZXIiOiJodHRwczovL2NzZGV2ODAzLnNwZGMxLmNvbS9jb253c291dGxvb2svc3JjL2luZGV4bG9jYWwuaHRtbEAwZTIxYTI4Mi01NTUzLTQ1M2UtYjRhYi1hM2UwYTFkZTYwMjMiLCJhcHBjdHgiOiJ7XCJvaWRcIjpcIjdhMDE2ODY5LWM3NmQtNDQ5Yi1iMTM5LTkxYzExMGViZDk4ZlwiLFwicHVpZFwiOlwiMTAwMzAwMDA5NjM3MTA2M1wiLFwic210cFwiOlwiamFzb253QGphc29ud2oub25taWNyb3NvZnQuY29tXCIsXCJ1cG5cIjpcImphc29ud0BqYXNvbndqLm9ubWljcm9zb2Z0LmNvbVwiLFwic2NvcGVcIjpcIlBhcmVudEl0ZW1JZDpBQU1rQURkaE5URmtOMlUyTFdReU5tRXROR014TkMxaE9URmlMVFZpTmprM1kyVTBNemMyWXdCR0FBQUFBQURJNmN5WXprZWdRNXhJOUcyK2tsR2tCd0JrcmVnU0YraGRRNXViZnhNL0ZlU3ZBQUFBQUFFTUFBQmtyZWdTRitoZFE1dWJmeE0vRmVTdkFBQnJCNGdMQUFBPVwifSIsImlzcyI6IjAwMDAwMDAyLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMEAwZTIxYTI4Mi01NTUzLTQ1M2UtYjRhYi1hM2UwYTFkZTYwMjMiLCJhdWQiOiIwMDAwMDAwMi0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvb3V0bG9vay5vZmZpY2UzNjUuY29tQDBlMjFhMjgyLTU1NTMtNDUzZS1iNGFiLWEzZTBhMWRlNjAyMyIsImV4cCI6MTQ4NjUwMDQzNywibmJmIjoxNDg2NTAwMTM3fQ.T3Z-1eolRYuG0MmXNZyKSo8wwmoRJAJTKj2S5GhQA27NB-0SOZbhtsDAg4XgcxeQsfHKUxlJnr33pPZiwfZzTxKijRBVrsjD0XtAdxrWlv6GiIaSWHcFX1t1WXp0srt2Ook5oK-XnV6VYvadPM29Ew9ylj_waLyVTUUJ1rigV0_g0a0ZTy1VG_ReQwWp_d6D8gsK0q56ekVjzbaGFdyBHqUL6k1-n80BQ-aSALPM8hX0i4RiXcNGjkarASZppsp3eYsSvauQO7B3Sffm95XK6HzYcRpeNXzb_TS1xzbwsLJ7n677uSks_aO_F52ZGCM6FxULGM-NP8baskwV_zWyTw";
+        
+        function createCORSRequest(method, url) {
+            var xhr = new XMLHttpRequest();
+            if ("withCredentials" in xhr) {
+                xhr.open(method, url, false);
+            } else if (typeof XDomainRequest != "undefined") {
+                //alert
+                xhr = new XDomainRequest();
+                xhr.open(method, url);
+            } else {
+                console.log("CORS not supported");
+                alert("CORS not supported");
+                xhr = null;
+            } return xhr;
+        }
+
+        function clickTest() {
+            var url = $('#url').val(),
+                method = $('#method').val(),
+                emailId = $('#emailId').val(),
+                token = $('#accessToken').val();
+
+            if (!emailId || !token) {
+                display("Enter email ID and access token to access EWS.");
+                return;
+            }
+
+            var displayText = "";
+
+            display("Creating CORS request...");
+
+            var xhr = createCORSRequest(method, url);
+
+            display("Setting request header...");
+            xhr.setRequestHeader('Content-Type', 'text/xml');
+
+            xhr.setRequestHeader('Access-Control-Allow-Header', '*');
+
+            //if (!window.location.origin) {
+            //    window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+            //}
+            //xhr.setRequestHeader("Access-Control-Allow-Origin", window.location.origin);
+            //xhr.setRequestHeader("Access-Control-Allow-Credentials", "true");
+
+            display("Setting bearer token in header...");
+            xhr.setRequestHeader("Authorization", "Bearer " + token);
+            
+            xhr.onload = function () {
+                display("Within onload event.");
+                if (xhr.status == 200) {
+                    var formattedResponse = xhr.response; //JSON.stringify(JSON.parse(xhr.response), undefined, 2);
+                    //display(formattedResponse);
+                    display("Retrieving email content and body successfully. The total size is: " + formattedResponse.length);
+                    //display(xhr.response);
+
+                    //var xmlDoc = $.parseXML(xhr.response);
+                    //var bodyElement = "TextBody";
+                    //var contentNode = xmlDoc.getElementsByTagNameNS('http://schemas.microsoft.com/exchange/services/2006/types', 'MimeContent')[0];
+                    //var bodyNode = xmlDoc.getElementsByTagNameNS('http://schemas.microsoft.com/exchange/services/2006/types', bodyElement)[0];
+
+                    //if (contentNode.childNodes[0].data == null) {
+                    //    display("content returns null");
+                    //}
+                    //display("The email content is as follows:");
+                    //display(" -- Length: " + contentNode.childNodes[0].data.length);
+                    ////display(contentNode.childNodes[0].data);
+                    //if (bodyNode.childNodes[0].data == null) {
+                    //    display("Body returns null.");
+                    //}
+                    //display("The email body is as follows:");
+                    //display(bodyNode.childNodes[0].data.length);
+                    
+
+                    var contentElement = "MimeContent",
+                        bodyElement = "TextBody";
+
+                    var mimeContent = extractContent(xhr.response, contentElement),
+                        body = extractContent(xhr.response, bodyElement);
+
+                    if (!mimeContent) {
+                        display("content returns null");
+                    }
+                    display("The email content is as follows:");
+                    display(" -- Length: " + mimeContent.length);
+                    //display(mimeContent);
+                    if (!body) {
+                        display("Body returns null.");
+                    }
+                    display("The email body is as follows:");
+                    display(body.length);
+                    //display(body);
+
+                    //var emailMimeContent = contentNode.childNodes[0].data;
+                    display("Decoding the email mime content.");
+                    var emailMimeContent = atob(mimeContent);
+                    display("Decoding completed, creating Blob based on the response...");
+                    var blob,
+                    mimeType = 'message/rfc822',
+                    ab;
+                    try {
+                        display("Creating blob using ArrayBuffer and constructor....");
+                        ab = new ArrayBuffer(emailMimeContent.length);
+                        display("Creating blob using ArrayBuffer and constructor..-- created ArrayBuffer, creating Uint8Array...");
+                        var uintArray = new Uint8Array(ab);
+                        display("Creating blob using ArrayBuffer and constructor..-- created Uint8Array, looping the string to fill the array...");
+                        for (var i = 0; i < emailMimeContent.length; i++) {
+                            uintArray[i] = emailMimeContent.charCodeAt(i);
+                        }
+
+                        var dataView = new DataView(ab);
+                        blob = new Blob([dataView.buffer], { type: mimeType });
+                        display("Creating Blob completed.");
+
+                    } catch (err2) {
+                        display("Create blob using BlobBuilder failed with message: " + err2);
+                    }
+
+                    if (!blob) {
+                        display("Blob is empty.");
+                    } else {
+                        display("Creating blob successfully. The blob size is: " + blob.size);
+                    }
+
+                } else {
+                    display("HTTP status: " + xhr.status + "<br> Response: " + xhr.response);
+                }
+            }
+            xhr.onerror = function () {
+                display("Within onerror event.");
+
+            }
+
+            display("Sending request...");
+            xhr.send(getRequest(emailId));
+        }
+
+        function display(message) {
+            var traceMsgControl = $('#testOutput'),
+            currentTime = new Date(),
+            hour = currentTime.getHours(),
+            min = ('0' + currentTime.getMinutes()).slice(-2),
+            sec = ('0' + currentTime.getSeconds()).slice(-2),
+            milliSec = ('00' + currentTime.getMilliseconds()).slice(-3);
+
+            var tiemStamp = hour + ":" + min + ":" + sec + "." + milliSec;
+
+            traceMsgControl.val(traceMsgControl.val() + tiemStamp + ": " + message + "\n");
+        }
+
+        function extractContent(xmlString, tagName) {
+            var start, end, elementStart, elementEnd;
+
+            elementStart = xmlString.indexOf(":" + tagName);
+            elementEnd = xmlString.indexOf(":" + tagName, elementStart + tagName.length);
+
+            start = xmlString.indexOf(">", elementStart);
+            end = xmlString.lastIndexOf("<", elementEnd);
+
+            return xmlString.slice(start + 1, end);
+        }
+
+        function clearText(id) {
+            $('#' + id).val("");
+        }
+
+    </script>
+</head>
+<body>
+
+<h2>Test retrieving email content from EWS using SOAP request</h2>
+<label>URL:</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" id="url" value="https://outlook.office365.com/EWS/Exchange.asmx" size="68"/><br/>
+
+<label>Method: </label> &nbsp;
+<input type="text" id="method" value="POST" size="68" /><br/>
+
+<label>Email ID:</label> &nbsp;&nbsp;&nbsp;&nbsp;
+<a href="javascript:;" onclick="javascript: clearText('emailId');">Clear Email ID</a><br/>
+<textarea id="emailId" cols="80" rows="3">AQMkADg2N2M0YTNiLWZlOGUtNDk4Ny05MDJlLWJmNzE4YTljMmUwNABGAAADEwrvPQQuQ0SpAvXVsb5ZGAcAFz+FNRp0lUaXdUzHlW4cBwAAAgEMAAAAFz+FNRp0lUaXdUzHlW4cBwAAAZxYrwAAAA==
+    </textarea><br />
+    <label>Token:</label> &nbsp;&nbsp;&nbsp;&nbsp;
+<a href="javascript:;" onclick="javascript: clearText('accessToken');">Clear Token</a><br/>
+    <textarea id="accessToken" cols="80" rows="5"></textarea><br/>
+
+    <input type="button" value="Test" title="Test SOAP request" onclick="clickTest();" />
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="javascript:;" onclick="javascript: clearText('testOutput');">Clear Message</a>
+    <br />
+    <label>Results</label><br/>
+    <textarea id="testOutput" cols="80" rows="30" ></textarea>
+</body>
+
+</html>
+
+<!-- Copyright (c) 2016-2017  OpenText Corp. All Rights Reserved. -->

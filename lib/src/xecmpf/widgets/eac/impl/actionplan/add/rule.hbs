@@ -1,0 +1,22 @@
+{{#if summary}}
+
+<div class='eac-rules-list'>
+  {{#if noRules}}
+  <span class='eac-rules-list-norules'>{{noRulesDef}}</span>
+  {{else}}
+  <span class='eac-rules-list-name'>{{ruleName}}</span>
+  <span class='eac-rules-list-operator'>{{operator}}</span>
+  <span class='eac-rules-list-value' title={{value}}>{{value}}</span>
+  {{/if}}
+</div>
+
+{{else}}
+
+<div class='eac-rule-header'>
+  <h5 class='eac-rule-title'>{{conditionLabel}} {{sequence}}</h5>
+  <button class='xecmpf-eac-rule-delete csui-icon eac-delete-icon' aria-hidden="true"></button>
+</div>
+<div class="xecmpf-eac-rule-form"></div>
+
+{{/if}}
+<!-- Copyright (c) 2016-2017  OpenText Corp. All Rights Reserved. -->

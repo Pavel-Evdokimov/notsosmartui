@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+ 
+    
+    <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/Office.js" type="application/javascript"></script>
+
+    <link rel="stylesheet" href="../../../csui/themes/carbonfiber/theme.css">
+
+    <script>document.write("<script type='text/javascript' src='config.js?v=" + Date.now() + "'><\/script>");</script>
+
+    <script src="../../../csui/lib/require.js"></script>
+    <script src="../../../csui/config.js" data-csui-path="../../../csui"></script>
+
+    <link rel="stylesheet" href="../../../csui-release/bundles/csui-data.css">
+
+    <style media="screen" type="text/css">
+        
+        #wkspName {
+            line-height: normal;
+        }
+
+    </style>
+
+</head>
+<body class="conwsoutlook-widget binf-widgets" style="background: none;min-width: 100px;">
+<div id="content"></div>
+<div id="topMessage"></div>
+<div id="blockingSpinner" class="load-container binf-hidden">
+    <div class="outer-border">
+        <div class="loader">
+        </div>
+    </div>
+</div>
+
+    <iframe id='ssoFrame' style="visibility:hidden;display:none"></iframe>
+
+    <script>
+        // Global variable representing the current email. This item is initialized on the landing page.
+        var EmailError;
+
+        var getQueryParameter = function (param) {
+            var result = window.location.search.match(
+                        new RegExp("(\\?|&)" + param + "(\\[\\])?=([^&]*)")
+                    );
+
+            return result ? result[3] : "";
+        }
+
+        var cgi = getQueryParameter("cgiPath");
+        if (!window.ContentServerUrl) {
+            window.ContentServerUrl = window.location.origin + "/" + cgi;
+        }
+
+        var paths = window.location.pathname.split('/');
+        var supportPath = paths[0] ? paths[0] : (paths.length > 1 ? paths[1] : "");
+        var traceEnabled = typeof(Storage) === 'undefined' ? false : localStorage.getItem('outlookTraceEnabled') ? localStorage.getItem('outlookTraceEnabled') === 'true' : false;
+        if (!window.ContentServerSupportPath) {
+            window.ContentServerSupportPath = supportPath;
+        }
+
+        require.config({
+            paths: {
+                conws: '../..'
+            },
+            config: {
+                'csui/utils/contexts/factories/connector': {
+                    connection: {
+                        url: window.ContentServerUrl + '/api/v1',
+                        supportPath: window.ContentServerSupportPath
+                    }
+                },
+                'csui/controls/form/form.view': {
+                    'extensions': {
+                        'csui': [
+							"csui/controls/form/fields/alpaca/alpuserfield"
+                        ]
+                    }
+                },
+                'csui/utils/log': {
+                    page: traceEnabled,
+                    level: 'INFO',
+                    performanceTimeStamp: false,
+                    moduleNameStamp: false,
+                    server: false,
+                    window: false
+                }
+            },
+            deps: [
+              'csui/lib/require.config!csui/csui-extensions.json'
+            ]
+        });
+
+        require([
+            'csui/lib/jquery', 'csui/lib/marionette', 'csui/utils/contexts/page/page.context',
+            'conws/widgets/outlook/conwsoutlook.view', 'conws/widgets/outlook/impl/utils/emailservice'
+        ], function($, Marionette, PageContext, ConWsEmailView, EmailService) {
+
+            if (!window.ContentServerUrl || !window.ContentServerSupportPath) {
+                $('#topMessage').html("<br/>" + EmailService.constants.cs_config_missing);
+                return;
+            }
+
+            var officeInitialized = false;
+
+            Office.initialize = function(reason) {
+                //$('#topMessage').append(timeStamp() + "..... 1 reason: " + reason + "<br>");
+                //$('#topMessage').append(timeStamp() + "..... 1 before document ready. window.viewDisplayed = " + window.viewDisplayed + "<br>");
+
+                if (window.viewDisplayed) {
+                    window.viewDisplayed = false;
+                    setTimeout(function() { location = location; });
+                }
+
+                officeInitialized = true;
+                $(document).ready(function() {
+
+                    //$('#topMessage').append(timeStamp() + "..... 2 reason: " + reason + ", officeInitialized=" + officeInitialized + "<br>");
+
+                    EmailService.getCurrentMailboxItem().then(
+                        function(data) {
+                            window.CurrentEmailItem = data.currentEmail;
+                            window.currentUser = data.currentUser;
+                            window.SettingStorage = window.localStorage;
+                            setTimeout(function() { showWidget(); });
+                        },
+                        function(error) {
+                            EmailError = error;
+                            $('#topMessage').html(EmailService.constants.retrieve_email_error + error);
+                        }
+                    );
+                });
+            };
+            setTimeout(function() {
+                if (!officeInitialized) {
+                    // Not in Office context, but still show the widget
+
+                    // For testing without email context
+                    var dummyEmailItem = {
+                        //subject: "Order 155 from customer 0 requrest of product 508 for equipment building 200 from for client 0", //"test email", //
+                        subject: "A strange email 你好 こんにちは-`~!@#$%^&*()_+=-[]\|}{;'\"_,./?>< (3)",
+                        sender: { displayName: "Nathan", emailAddress: "nathan@SPDC1.com" },
+                        to: [
+                            { displayName: "Joe Doe", emailAddress: "joe@spdc1.com" },
+                            { displayName: "Bill Whites", emailAddress: "bill@jasonwang.onmicrosoft.com" }
+                        ],
+                        cc: [
+                            { displayName: "Derek Miller", emailAddress: "Derek@spdc1.com" },
+                            { displayName: "Fiona Smith", emailAddress: "fiona@jasonwang.onmicrosoft.com" }
+                        ],
+                        attachments: [
+                            //*
+                            { id: "atthment1", name: "Meeting 1.txt", attachmentType: "file", contentType: "plainText/txt"},
+                            { id: "atthment2", name: "Attachment Test 2 with a very very very very very very very very very very long name for test.xlsx", attachmentType: "file", contentType: "application/vnd.ms-excel"},
+                            { id: "atthment3", name: "Attachment Test 3.pdf", attachmentType: "file", contentType: "application/vnd.pdf"},
+                            //*/
+                            { id: "atthment4", name: "Attachment Test 4.html", attachmentType: "file", contentType: "text/html"}
+                            //*/
+                        ]
+                    };
+                    window.CurrentEmailItem = dummyEmailItem;
+                     
+                    showWidget();
+                }
+            }, 250);
+
+            function showWidget() {
+                // Create the data managing context
+                var context = new PageContext();
+                context.EmailError = EmailError;
+                // Wrap the widget placeholder
+                var contentRegion = new Marionette.Region({
+                        el: '#content'
+                    }),
+                    // Create the widget instance
+                    emailView = new ConWsEmailView({
+                        context: context
+                    });
+
+                // Show the widget on the page
+                //setTimeout(function () { contentRegion.show(emailView); }, 350);
+                contentRegion.show(emailView);
+            }
+
+            function timeStamp() {
+                var currentTime = new Date(),
+                    hour = currentTime.getHours(),
+                    min = ('0' + currentTime.getMinutes()).slice(-2),
+                    sec = ('0' + currentTime.getSeconds()).slice(-2),
+                    milliSec = ('00' + currentTime.getMilliseconds()).slice(-3);
+
+                return hour + ":" + min + ":" + sec + "." + milliSec + ": ";
+            }
+        });
+    </script>
+</body>
+</html>
+<!-- Copyright (c) 2016-2017  OpenText Corp. All Rights Reserved. -->

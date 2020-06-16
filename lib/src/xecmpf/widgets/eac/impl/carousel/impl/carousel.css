@@ -1,0 +1,53 @@
+/* Copyright (c) 2016-2017  OpenText Corp. All Rights Reserved. */
+
+.carousel_view{
+  
+    display: flex;
+    left: 32%;
+    
+    
+    position: absolute;
+    height:  17px;
+    bottom: -48px;
+    background: white;
+    top: 0;
+    width: 100%;
+}
+.carousel-view{
+  
+    display: flex;
+    left: 32%;
+    
+    
+    position: absolute;
+    height:  17px;
+    bottom: -48px;
+    background: white;
+    top: 0;
+    width: 100%;
+}
+.carousel-view li.indicators{
+    background-color: #333333;
+    margin: 0 6px;
+    
+    height: 16px;
+    width: 16px;
+    border: 1px solid #606060;
+    border-radius: 50%;
+    background-color: #ddd;
+    border: 1px solid gray;
+}
+
+.carousel-view li.indicators.active{
+    background-color: black;
+    border: 1px solid gray;
+    background-color: #333333;
+    margin: 0 6px;
+    
+    height: 16px;
+    width: 16px;
+    border: 1px solid #606060;
+    border-radius: 50%;
+    background-color: black;
+    border: 1px solid gray;
+}

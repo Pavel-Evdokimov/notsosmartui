@@ -1,0 +1,138 @@
+/* Copyright (c) 2016-2017  OpenText Corp. All Rights Reserved. */
+
+.csui-configure-perspective-widget {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.binf-row .csui-configure-perspective-widget {
+  top: 5px;
+  bottom: 5px;
+  right: 5px;
+  left: 5px;
+}
+
+.binf-widgets .csui-perspective-placeholder.csui-widget-drop, .binf-widgets .pman-dnd-hover-placeholder .csui-perspective-placeholder {
+  border: 2px solid #09BCEF;
+  background-color: rgba(157, 228, 249, 0.2);
+}
+
+
+.binf-widgets .csui-pman-widget-close {
+  display: none;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 24px;
+  height: 24px;
+}
+
+.csui-pman-widget-close div {
+  height: 8px;
+  width: 8px;
+  cursor: pointer;
+}
+
+.csui-configure-perspective-widget:hover .csui-pman-widget-close,
+.csui-configure-perspective-widget.binf-active .csui-pman-widget-close {
+  display: inline-block;
+}
+
+.csui-configure-perspective-widget.csui-widget-drop .csui-pman-widget-close {
+  display: none;
+}
+
+.csui-drag-start .csui-configure-perspective-widget .csui-pman-widget-close {
+  display: none; 
+}
+
+.csui-configure-perspective-widget .csui-pman-widget-masking {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 1150; 
+}
+
+.csui-configure-perspective-widget .csui-pman-popover-holder {
+  position: absolute;
+  height: 100%;
+}
+
+.csui-configure-perspective-widget .csui-pman-popover-right {
+  right: 25%;
+}
+
+.csui-configure-perspective-widget .csui-pman-popover-left {
+  left: 25%;
+}
+
+.csui-pman-placeholder-container .csui-pman-widget-close {
+  display: none !important;;
+}
+
+.csui-pman-editable-widget {
+  position: relative;
+}
+
+.csui-pman-editable-widget .tile-content {
+  position: static;
+}
+
+.pman-ms-popover {
+  display: -ms-grid !important;
+  -ms-grid-columns: min-content;
+}
+
+.pman-widget-popover {
+  min-width: 252px;
+  max-width: 500px;
+  width: min-content;
+  width: -moz-min-content;
+}
+
+.perspective-editing .binf-popover {
+  background-color: #f7f7f7;
+  border-radius: 0px;
+  border: 0 none;
+  padding: 0px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+}
+.perspective-editing .binf-popover .binf-popover-content {
+  padding: 14px 0px;
+  min-width: inherit;
+  max-width: inherit;
+}
+
+.binf-widgets .csui-pman-form-header {
+  padding: 0px 16px;
+}
+
+.perspective-editing .binf-popover.binf-right .binf-popover-content{
+  border-left: 4px solid #09BCEF;
+}
+
+.perspective-editing .binf-popover.binf-left .binf-popover-content{
+  border-right: 4px solid #09BCEF;
+}
+
+.perspective-editing .binf-arrow:after {
+  background: inherit;
+}
+
+.perspective-editing .binf-popover.binf-right > .binf-arrow:after {
+  border-right-color: #09BCEF;
+  overflow: hidden;
+}
+
+.perspective-editing .binf-popover.binf-left > .binf-arrow:after {
+  border-left-color: #09BCEF;
+  overflow: hidden;
+}
+
+
+
+
